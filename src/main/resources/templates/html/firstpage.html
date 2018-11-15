@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" >
+<html>
+<head>
+	<link rel="shortcut icon" th:href="@{/gp/images/favicon.ico}" type="image/x-icon">
+	<title>吃客官网</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link th:href="@{/gp/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+	<link rel="stylesheet" th:href="@{/gp/css/main1.css}" />
+<link rel="stylesheet" th:href="@{/gp/css/style.css}" type="text/css" media="all" />
+<!--// css -->
+	<!--轮播图-->
+	<link rel="stylesheet" type="text/css" th:href="@{/gp/css/normalize.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/gp/css/demo.css}">
+	<link rel="stylesheet" th:href="@{/gp/css/app.css}">
+<!-- font-awesome icons -->
+<link th:href="@{/gp/css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{/gp/css/styles.css}" rel="stylesheet">
+	<script th:src="@{/gp/js/modernizr.js}"></script>
+	<link rel="stylesheet" th:href="@{/gp/css/layui.css}"  media="all">
+	<link rel="stylesheet" th:href="@{/gp/css/global.css}" media="all">
+<!-- //font-awesome icons -->
+	<link rel="stylesheet" th:href="@{/gp/css/Cooldog.css}">
+	<link rel="stylesheet" th:href="@{/gp/css/iconfont.css}">
+<!-- font -->
+<link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!-- //font -->
+<script th:src="@{/gp/js/jquery-1.11.1.min.js}"></script>
+<script th:src="@{/gp/js/bootstrap.js}"></script>
+<script th:src="@{/gp/js/SmoothScroll.min.js}"></script>
+	<style>
+		.site-demo-tplh2{
+			height: 80px;
+		}
+		.site-demo-tplh2 img{
+			height: 90px;
+			border-radius: 100px;
+			float:left;
+		}
+		.site-demo-tplh2 #title{
+			margin-top: 20px;
+			margin-left: 40%;
+			font-weight: bold;
+			font-size: 25px;
+		}
+		.site-demo-tplview{
+			background-color: #fff;
+		}
+		#pc-kk-form-list{
+			height: 50px;
+			border: none;
+		}
+		#pc-kk-form-list-clear{
+			height: 50px;
+			border:none;
+		}
+		#last{
+			height: 50px;
+			border:none;
+		}
+		header #nav ul li a{
+			font-size: 14px;
+		}
+	</style>
+<style>
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 18px;
+        line-height: 1.5;
+        font-weight: 300;
+        color: #333;
+        font-family: "Nunito Sans", sans-serif;
+    }
+
+    .content2 {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1000px;
+    }
+
+    .heading {
+        width: 100%;
+        margin-left: 1rem;
+        font-size: 1.618rem;
+        text-transform: uppercase;
+        letter-spacing: .1ch;
+        line-height: 1;
+        padding-bottom: .5em;
+        margin-bottom: 1rem;
+        position: relative;
+        color: #fd5c63;
+        font-size: 3em;
+    }
+    /*.heading:after {*/
+        /*display: block;*/
+        /*content: '';*/
+        /*position: absolute;*/
+        /*width: 115px;*/
+        /*height: 4px;*/
+        /*background: linear-gradient(135deg, #1a9be6, #1a57e6);*/
+        /*bottom: 0;*/
+    /*}*/
+
+    .description {
+        width: 100%;
+        margin-top: 0;
+        margin-left: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .card {
+        color: inherit;
+        cursor: pointer;
+        width: calc(33% - 2rem);
+        min-width: calc(33% - 2rem);
+        height: 400px;
+        min-height: 400px;
+        perspective: 1000px;
+        margin: 1rem;
+        position: relative;
+    }
+    @media screen and (max-width: 800px) {
+        .card {
+            width: calc(50% - 2rem);
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .card {
+            width: 100%;
+        }
+    }
+
+    .front,
+    .back {
+        display: flex;
+        border-radius: 6px;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        transition: ease-in-out 600ms;
+    }
+
+    .front {
+        background-size: cover;
+        padding: 2rem;
+        font-size: 1.618rem;
+        font-weight: 600;
+        color: #fff;
+        overflow: hidden;
+        font-family: Poppins, sans-serif;
+    }
+    .front:before {
+        position: absolute;
+        display: block;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #1a9be6, #1a57e6);
+        opacity: .25;
+        z-index: -1;
+    }
+    .card:hover .front {
+        transform: rotateY(180deg);
+    }
+    .card:nth-child(even):hover .front {
+        transform: rotateY(-180deg);
+    }
+
+    .back {
+        background: #fff;
+        transform: rotateY(-180deg);
+        padding: 0 2em;
+    }
+    .card:hover .back {
+        transform: rotateY(0deg);
+    }
+    .card:nth-child(even) .back {
+        transform: rotateY(180deg);
+    }
+    .card:nth-child(even):hover .back {
+        transform: rotateY(0deg);
+    }
+
+</style>
+	<style>
+		#zhuxiao:hover{
+          background-color: rgba(234, 234, 234, 0.51);
+		}
+	</style>
+	<link th:href="@{/gp/css/style2.css}" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" th:src="@{/gp/js/jquery-1.8.3.min.js}"></script>
+</head>
+<script>
+    /*---------返回顶部----------*/
+    $(function() {
+        $(".btn_top").hide();
+        $(".btn_top").live("click",function(){
+            $('html, body').animate({scrollTop: 0},300);return false;
+        })
+        $(window).bind('scroll resize',function(){
+            if($(window).scrollTop()<=300){
+                $(".btn_top").hide();
+            }else{
+                $(".btn_top").show();
+            }
+        })
+    })
+
+    /*---------返回顶部 end----------*/
+</script>
+<!--分页-->
+<style>
+	.pagination {
+		display: inline-block;
+		padding-left: 0;
+		margin: 20px 0;
+		border-radius: 4px;
+	}
+	.pagination > li {
+		display: inline;
+	}
+	.pagination > li > a,
+	.pagination > li > span {
+		position: relative;
+		float: left;
+		padding: 6px 12px;
+		margin-left: -1px;
+		line-height: 1.42857143;
+		color: #337ab7;
+		text-decoration: none;
+		background-color: #fff;
+		border: 1px solid #ddd;
+	}
+	.pagination > li:first-child > a,
+	.pagination > li:first-child > span {
+		margin-left: 0;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
+	.pagination > li:last-child > a,
+	.pagination > li:last-child > span {
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+	.pagination > li > a:hover,
+	.pagination > li > span:hover,
+	.pagination > li > a:focus,
+	.pagination > li > span:focus {
+		color: #23527c;
+		background-color: #eee;
+		border-color: #ddd;
+	}
+	.pagination > .active > a,
+	.pagination > .active > span,
+	.pagination > .active > a:hover,
+	.pagination > .active > span:hover,
+	.pagination > .active > a:focus,
+	.pagination > .active > span:focus {
+		z-index: 2;
+		color: #fff;
+		cursor: default;
+		background-color: #337ab7;
+		border-color: #337ab7;
+	}
+	.pagination > .disabled > span,
+	.pagination > .disabled > span:hover,
+	.pagination > .disabled > span:focus,
+	.pagination > .disabled > a,
+	.pagination > .disabled > a:hover,
+	.pagination > .disabled > a:focus {
+		color: #777;
+		cursor: not-allowed;
+		background-color: #fff;
+		border-color: #ddd;
+	}
+	.pagination-lg > li > a,
+	.pagination-lg > li > span {
+		padding: 10px 16px;
+		font-size: 18px;
+	}
+	.pagination-lg > li:first-child > a,
+	.pagination-lg > li:first-child > span {
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+	.pagination-lg > li:last-child > a,
+	.pagination-lg > li:last-child > span {
+		border-top-right-radius: 6px;
+		border-bottom-right-radius: 6px;
+	}
+	.pagination-sm > li > a,
+	.pagination-sm > li > span {
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+	.pagination-sm > li:first-child > a,
+	.pagination-sm > li:first-child > span {
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+	}
+	.pagination-sm > li:last-child > a,
+	.pagination-sm > li:last-child > span {
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+</style>
+<body>
+	<script th:src="@{/gp/js/jquery.vide.min.js}"></script>
+		<header>
+			<nav id="nav">
+				<ul>
+					<li><a th:href="@{/shop1/shoppic.action}" target="_blank" id="nav_current">首页</a></li>
+					<li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+					<li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+					<li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+					<li><a th:href="@{/topic}" target="_self">部落</a></li>
+					<li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+					<li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+
+					<li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+						<span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+					</li>
+				</ul>
+				<!--<script src="../js/silder.js"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+			</nav>
+		</header>
+
+	<div class="slider">
+
+		<div class="slider-img">
+			<ul class="slider-img-ul">
+				<li th:each="roundPics:${roundPics}"><img th:src="${roundPics.roundPicSrc}"></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<script th:src="@{/gp/js/jquery-1.11.0.min.js}" type="text/javascript"></script>
+	<script type="text/javascript" th:src="@{/gp/js/xSlider.js}"></script>
+
+	<!-- special -->
+	<div class="special">
+		<div class="container">
+			<div class="special-heading">
+				<h3>今日优选</h3>
+			</div>
+			<div class="special-grids">
+				<div class="col-md-4 w3l-special-grid" th:each="postsTop1:${postsTop1}">
+					<div class="col-md-6 w3ls-special-img">
+						<div class="w3ls-special-text effect-1">
+							<a th:href="@{/posts/details(postid=${postsTop1.postid})}"><h4 th:text="${postsTop1.postname}"></h4></a>
+						</div>
+					</div>
+					<div class="col-md-6 agileits-special-info">
+						<h4 th:text="${postsTop1.postname}"></h4>
+						<p th:text="${postsTop1.postssimpleintro}"></p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+
+				<div class="col-md-4 w3l-special-grid" th:each="postsTop2:${postsTop2}">
+					<div class="col-md-6 agileits-special-info">
+						<h4 th:text="${postsTop2.postname}"></h4>
+						<p th:text="${postsTop2.postssimpleintro}"></p>
+					</div>
+					<div class="col-md-6 w3ls-special-img wthree-img2">
+						<div class="w3ls-special-text effect-1">
+							<a th:href="@{/posts/details(postid=${postsTop2.postid})}"><h4 th:text="${postsTop2.postname}"></h4></a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+	<!-- //special -->
+	<!-- features -->
+	<div class="features">
+		<div class="container">
+            <div class="content2">
+                <h1 class="heading" style="margin-left: 407px">口碑精选</h1>
+               <a class="card"th:each="result:${resultList}" th:href="@{/shop/shopMore(shopId=${result.shopId})}" >
+                <div class="front" id="pic1">
+				<img  th:src="${result.shopPic}" style="width: 294px;height: 400px;z-index: -1">
+                </div>
+                <div class="back">
+                    <div>
+                     <p th:text="${result.shopSimpleIntro}" style="font-size: 20px"></p>
+                    </div>
+                </div>
+			   </a>
+
+            </div>
+		</div>
+	</div>
+	<!-- //features -->
+	<!-- customer -->
+	<div class="customer">
+		<div class="container">
+			<div class="customer-heading">
+				<h3>达人感悟</h3>
+			</div>
+			<div class="customer-heading-grids">
+				<div class="col-md-4 customer-grid" th:each="posters:${posters}">
+					<div class="customer-info">
+						<p th:text="${posters.postertalk}"></p>
+					</div>
+					<div class="customer-img">
+						<a th:href="@{/posts/person(posterid=${posters.posterid})}"><img th:src="${posters.posterpic}" alt="" /></a>
+						<a th:href="@{/posts/person(posterid=${posters.posterid})}"><h5 th:text="${posters.postername}"></h5></a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<div style="width: 100%;height: 500px;background-color: white">
+		<div style="margin-top: 30px;">
+			<div style="width:40%;height: 400px;float: left;">
+				<div style="margin-left: 410px;margin-top:140px">
+					<h1 style="font-size: 45px">全世界的<br/>吃客</h1>
+					<a style="font-size: 20px;">与你一起分享美好生活</a>
+				</div>
+			</div>
+			<video id="myvideo" th:src="@{/gp/images/首页world.mp4}" autoplay="autoplay" loop="loop" style="width: 60%;height: 470px;margin-top: 10px;"></video>
+		</div>
+	</div>
+	<!-- //customer -->
+	<!-- footer -->
+	<div class="footer" style="padding: 30px 0;
+    line-height: 30px;
+    text-align: center;
+    height: 200px;
+    color: #666;
+    font-weight: 300;
+    padding: 4em 0;
+    background-color: #a7cbb4;">
+		<div class="container">
+			<div class="col-md soci">
+				<h3 style="font-size:1.7em;font-weight: 600;color: black">联系客服</h3>
+				<p>Find us on these social network sites</p>
+				<ul>
+					<li><a href="#"><i class="facebk"> </i></a></li>
+					<li><a href="#"><i class="twter"> </i></a></li>
+					<li><a href="#"><i class="goopl"> </i></a></li>
+					<li><a href="#"><i class="insta"> </i></a></li>
+					<div class="clearfix"></div>
+				</ul>
+
+			</div>
+
+
+			<div class="clearfix"> </div>
+
+		</div>
+	</div>
+	<!-- //footer -->
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="w3agile-list">
+				<ul>
+					<li><a href="about.html">About</a></li>
+					<li><a href="menu.html">Menu</a></li>
+					<li><a href="codes.html">Codes</a></li>
+					<li><a href="news.html">News & Events</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<div>
+	<div class="izl-rmenu">
+		<a class="consult" target="_blank"><div class="phone" style="display:none;">028-68637561</div></a>
+		<a class="cart"><div class="pic"></div></a>
+		<a href="javascript:void(0)" class="btn_top" style="display: block;"></a>
+	</div>
+	<a target="_blank"  href="http://wpa.qq.com/msgrd?v=3&uin=1607977344&site=qq&menu=yes" id="udesk-feedback-tab" class="udesk-feedback-tab-left" style="display: block; background-color: black;"></a>
+	<!--qq聊天代码部分end-->
+	<!-- //copyright -->
+	</div>
+</body>	
+</html>

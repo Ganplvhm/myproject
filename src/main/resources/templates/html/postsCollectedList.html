@@ -1,0 +1,174 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <link th:href="@{/qy/css/styles.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/qy/css/layui.css}"  media="all">
+    <link rel="stylesheet" th:href="@{/qy/css/global.css}" media="all">
+    <script th:src="@{/qy/js/modernizr.js}"></script>
+    <style>
+        .avatar { margin: 20px auto; width: 160px; height: 160px; border-radius: 160px; -moz-border-radius: 160px; -webkit-border-radius: 160px; overflow: hidden; }
+        /*.avatar a { display: block; padding-top: 97px; width: 160px; height: 63px; background: url(http://ph584gplc.bkt.clouddn.com/logo.png) no-repeat; background-size: 160px 160px }*/
+        /*.avatar a span { display: block; margin-top: 63px; padding-top: 8px; width: 160px; height: 55px; text-align: center; font-size: 16px; line-height: 20px; color: #fff; background: rgba(0, 0, 0, .5); -webkit-transition: margin-top .2s ease-in-out; -moz-transition: margin-top .2s ease-in-out; -o-transition: margin-top .2s ease-in-out; transition: margin-top .2s ease-in-out; }*/
+        /*.avatar a:hover span { display: block; margin-top: 0; }*/
+        /*.textimg img{*/
+        /*width: 35%;*/
+        /*height: 5%;*/
+        /*}*/
+
+        /*分页*/
+        .pages ul li{
+            float:left;
+            margin-top: 5px;
+        }
+        .pagination{
+            width:fit-content;
+            height:30px;
+            margin:0 auto;
+        }
+
+        .footphoto{
+            left:-10px;
+        }
+        .pagination a span{
+            margin:0 auto;
+        }
+    </style>
+    <!--样式表开始-->
+    <link type="text/css" rel="stylesheet" th:href="@{/qy/css/demo1.css}"/>
+    <!--样式表结束-->
+    <script type="text/javascript" th:src="@{/qy/js/jquery.min.js}"></script>
+</head>
+<body>
+<header>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/shop1/shoppic.action}" target="_blank" id="nav_current">首页</a></li>
+            <li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+            <li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+            <li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+            <li><a th:href="@{/topic}" target="_self">部落</a></li>
+            <li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+            <li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+            <li id="userLi">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}">注销</a>
+					</span>
+                <span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+            </li>
+        </ul>
+        <!--<script src="../html/silder.html"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+    </nav>
+</header>
+<div class="mainContent">
+    <aside>
+
+        <a th:href="@{/iframe}"><img  th:src="@{/}+${session.user.userLogoSrc}" class="avatar" >
+            </img></a>
+        <section class="topspaceinfo">
+            <h1>吃是一种天赋，我们与生俱来</h1>
+            <p>吃货不是在吃，就是在去吃的路上....</p>
+        </section>
+        <div class="userinfo">
+            <p class="q-fans">粉丝：<a href="/" target="_blank">167</a>
+
+            <p class="btns"><a th:href="@{/collected/concerned(userName=${session.user.userName})}" target="_blank" >关注</a><a th:href="@{/collected/concerned1(userName=${session.user.userName})}" target="_blank">藏店</a><a th:href="@{/collected/concerned2(userName=${session.user.userName})}" target="_blank">藏帖</a><a th:href="@{/tofabu}" target="_blank">发帖</a></p>
+        </div>
+        <section class="newpic">
+            <h2>最新发帖</h2>
+            <ul>
+                <li th:each="userPost:${userPost}">
+                    <a th:href="@{/personalArticle(userPostId=${userPost.userPostId})}">
+                        <img th:src="${userPost.userPostImg}">
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section class="taglist">
+            <h2>全部标签</h2>
+            <ul>
+                <li><a href="#">吃客达人</a></li>
+                <li><a href="#">互动达人</a></li>
+                <li><a href="#">评论达人</a></li>
+            </ul>
+        </section>
+    </aside>
+    <div class="blogitem">
+        <iframe th:replace="/html/postsCollected::html" name="right" frameborder="0" width="100%" height="1200"></iframe>
+
+
+        <div class="pages">
+
+            <ul  class="pagination pagination-lg">
+                <li><a th:href="@{${'/collected/concerned2'}(userName=${session.user.userName},curPage=1)}">&laquo;</a></li>
+
+                <li>
+                    <a th:if="${!pageBean.isFirstPage}" th:href="@{${'/collected/concerned2'}(userName=${session.user.userName},curPage=${pageBean.pageNum-1})}">上一页</a>
+                    <a th:if="${pageBean.isFirstPage}" href="javascript:void(0);">上一页</a>
+                </li>
+
+                <li th:each="pageNo : ${#numbers.sequence(1, pageBean.pages)}">
+                    <a th:if="${pageBean.pageNum eq pageNo}" href="javascript:void(0);">
+                        <span th:text="${pageNo}"></span>
+                    </a>
+
+                    <a th:if="${not (pageBean.pageNum eq pageNo)}" th:href="@{${'/collected/concerned2'}(userName=${session.user.userName},curPage=${pageNo})}">
+                        <span th:text="${pageNo}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a th:if="${!pageBean.isLastPage}" th:href="@{${'/collected/concerned2'}(userName=${session.user.userName},curPage=${pageBean.pageNum+1})}">下一页</a>
+                    <a th:if="${pageBean.isLastPage}" href="javascript:void(0);">下一页</a>
+                </li>
+
+                <li><a th:href="@{${'/collected/concerned2'}(userName=${session.user.userName},curPage=${pageBean.pages})}" >&raquo;</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footavatar">
+        <img th:src="@{/}+${session.user.userLogoSrc}" style="  width: 100px;
+        height: 100px;
+        display: flex;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-left: 305px;"  class="footphoto">
+        <!--<ul class="footinfo">-->
+        <!--<p class="fname"><a th:href="@{/personal}" th:text="${users.userName}"></a>  </p>-->
+        <!--<p class="finfo">性别：<font th:text="${users.userSex}"></font> 年龄：<font th:text="${users.userAge}"></font>岁</p>-->
+        <!--<p>现居：<font th:text="${users.userAddress}"></font></p></ul>-->
+    </div>
+    <section class="visitor">
+        <h2>最近访客</h2>
+        <ul>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s0.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s1.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s2.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s3.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s5.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s6.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s7.jpg"></a></li>
+            <li><a href="/"><img src="http://ph584gplc.bkt.clouddn.com/s8.jpg"></a></li>
+        </ul>
+    </section>
+    <div class="Copyright">
+        <ul>
+            <a href="/">帮助中心</a><a href="/">空间客服</a><a href="/">投诉中心</a><a href="/">空间协议</a>
+        </ul>
+
+    </div>
+</footer>
+
+</body>
+</html>

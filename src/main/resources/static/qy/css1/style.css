@@ -1,0 +1,58 @@
+
+/* reset */
+
+/*end reset*/
+/* HTML5 display-role reset for older browsers */
+
+/* Global */
+
+
+
+
+
+.wrap {
+    width: 80%;
+    margin: auto;
+}
+
+header .wrap, .services_wrapper .wrap {
+    z-index: 20;
+}
+
+
+
+.navigation {
+    float: left;
+    text-align: center;
+    width: 1200px;
+
+    height: 100px;
+    z-index: 1;
+
+}
+
+.navigation li {
+    float: left;
+    margin-left: 30px;
+}
+
+.navigation a {
+    text-transform: uppercase;
+    color: #747474;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 1.5em 1em;
+    display:block;
+    width: 120px;
+    height:30px;
+    line-height: 3px;
+    text-align: center;
+}
+
+.navigation a:hover{
+    background-color:#1b7e5a;
+    opacity: 0.4;
+    color: yellow;
+}
+
+/*** start cauresol  navigation ***/

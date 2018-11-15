@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.TopicPicMapper">
+
+    <!--List<Log> getPic();-->
+    <select id="getPic" resultType="com.gem.chike.pojo.TopicPic">
+        SELECT topicPic FROM  tb_topicpic WHERE tb_topicpic.topicId = #{param1}
+    </select>
+
+    <!--<resultMap id="pic" type="com.gem.demo2.pojo.Topic">-->
+        <!--<id property="topicId" column="topicId"></id>-->
+        <!--<result property="topicIntro" column="topicIntro"></result>-->
+        <!--<result property="UserId" column="UserId"></result>-->
+        <!--<collection property="topicPics" ofType="com.gem.demo2.pojo.TopicPic">-->
+            <!--<id property="topicPicId" column="topicPicId"></id>-->
+            <!--<result property="topicPic" column="topicPic"></result>-->
+            <!--<result property="topicId" column="topicId"></result>-->
+        <!--</collection>-->
+    <!--</resultMap>-->
+
+</mapper>

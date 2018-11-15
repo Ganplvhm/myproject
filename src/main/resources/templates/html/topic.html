@@ -1,0 +1,285 @@
+<!doctype html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>吃客</title>
+
+    <link rel="shortcut icon" href="https://static.meishichina.com/v6/img/lib/f.ico">
+    <link rel="apple-touch-icon" href="https://static.meishichina.com/v6/img/lib/wapico.png">
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/css/all.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/css/space.css}">
+    <link rel="stylesheet" type="text/css" href="https://static.meishichina.com/v6/css/app/center/network2.css?">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/导航栏/styles.css}">
+    <script th:src="@{/fh/导航栏/modernizr.js}"></script>
+    <link rel="stylesheet" th:href="@{/fh/导航栏/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/fh/导航栏/global.css}" media="all">
+
+    <style>
+
+        .site-demo-tplh2 {
+            height: 80px;
+        }
+
+        .site-demo-tplh2 img {
+            height: 90px;
+            border-radius: 100px;
+            float: left;
+        }
+
+        .site-demo-tplh2 #title {
+            margin-top: 20px;
+            margin-left: 40%;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .site-demo-tplview {
+            background-color: #fff;
+        }
+
+        #pc-kk-form-list {
+            height: 50px;
+            border: none;
+        }
+
+        #pc-kk-form-list-clear {
+            height: 50px;
+            border: none;
+        }
+
+        #last {
+            height: 50px;
+            border: none;
+        }
+
+        header #nav ul li a {
+            font-size: 14px;
+        }
+    </style>
+
+    <style>
+        .pagination li{
+            float: left;
+            margin-left: 5%;
+        }
+
+        #pagePart{
+            height: 30px;
+        }
+        .pagination-lg{
+            width: 800px;
+            margin: 0 auto;
+        }
+        #footer{
+            margin-bottom: 0;
+        }
+    </style>
+
+
+</head>
+
+
+<header>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/shop1/shoppic.action}" target="_blank" >首页</a></li>
+            <li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+            <li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+            <li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+            <li><a th:href="@{/topic}" target="_self" id="nav_current">部落</a></li>
+            <li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+            <li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+            <li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+
+
+                <span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+            </li>
+        </ul>
+        <!--<script src="../html/silder.html"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+    </nav>
+</header>
+
+<div class="w logo_wrap2">
+    <div class="logo_current left">
+        <h1><a>吃客部落</a></h1>
+    </div>
+
+    <div class="logo_nav">
+
+        <a th:href="@{/topic}" >美食话题<i></i><b></b></a>
+        <a><i></i><b></b></a>
+        <a th:href="@{/logpage}" >美食日志<i></i><b></b></a>
+
+    </div>
+</div>
+
+
+<div class="wrap">
+    <div class="w clear" >
+        <div class="space_left">
+
+
+            <div class="ui_title">
+                <div class="ui_title_wrap clear ">
+                    <h2 class="on">
+                        话题</h2>
+
+                    <a class="right on" th:href="@{/tofabu}">发布话题</a>
+                </div>
+            </div>
+
+
+            <tr th:each="gtopics:${pageBean.list}">
+            <div class="pin_list clear" id="J_list">
+                <li>
+                    <div class="u">
+                        <a href="huataineirong.html" target="_blank" >  <img width="40" height="40" class="imgLoad"  style="display: block;" th:src="${gtopics.user.userLogoSrc}"   ></a>
+                        <div>
+                            <a class="t" target="_blank" th:text="${gtopics.user.userName}" style="font-size:25px;font-family: 楷体"> </a>
+                        </div>
+                    </div>
+                    <div class="c clear">
+                        <div class="pp" style="width: 800px">
+
+                            <a th:href="@{/Topiccontent(topicId=${gtopics.topicId},userName=${session.user.userName})}" target="_blank" th:text="${gtopics.topicIntro}" style="font-size:25px;font-family: 楷体 "></a>
+
+                        </div>
+                        <div style="width: 850px;height: 200px">
+                        <div th:each="pic:${gtopics.topicPics}" >
+                            <a class="clear"  target="_blank"  >
+                                <img class="imgLoad" th:src="${pic.topicPic}" style="display: block;width: 175px;height: 175px">
+
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+
+                </li>
+            </div>
+            </tr>
+
+            <div id="pagePart">
+                <nav>
+                    <ul  class="pagination pagination-lg">
+                        <li><a th:href="@{${'/topic'}(curPage=1)}">&laquo;</a></li>
+
+                        <li>
+                            <a th:if="${!pageBean.isFirstPage}" th:href="@{${'/topic'}(curPage=${pageBean.pageNum-1})}">上一页</a>
+                            <a th:if="${pageBean.isFirstPage}" href="javascript:void(0);">上一页</a>
+                        </li>
+
+                        <li th:each="pageNo : ${#numbers.sequence(1, pageBean.pages)}">
+                            <a th:if="${pageBean.pageNum eq pageNo}" href="javascript:void(0);">
+                                <span th:text="${pageNo}" style="color: #ff6600"></span>
+                            </a>
+
+                            <a th:if="${not (pageBean.pageNum eq pageNo)}" th:href="@{${'/topic'}(curPage=${pageNo})}">
+                                <span th:text="${pageNo}" ></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:if="${!pageBean.isLastPage}" th:href="@{${'/topic'}(curPage=${pageBean.pageNum+1})}">下一页</a>
+                            <a th:if="${pageBean.isLastPage}" href="javascript:void(0);">下一页</a>
+                        </li>
+
+                        <li><a th:href="@{${'/topic'}(curPage=${pageBean.pages})}" >&raquo;</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                <style type="text/css">
+                    .footer-area {
+                        padding: 10px 0
+                    }
+
+                    .footer-area .w {
+                        padding-top: 10px;
+                        border-top: 1px solid #e8e8e8
+                    }
+
+                    .footer-area a {
+                        color: #666
+                    }
+
+                    .footer-area a:hover {
+                        color: #ff6767
+                    }
+
+                    .ft1 {
+                        clear: none;
+                        float: left;
+                        font-size: 11px;
+                        color: #666;
+                        width: 680px;
+                        padding-top: 10px
+                    }
+
+                    .ft1 .c3b {
+                        color: #c90;
+                        font-size: 14px;
+                        font-weight: 700;
+                        margin-bottom: 6px
+                    }
+
+                    .ft1 .c3b a {
+                        color: #f50
+                    }
+
+                    .ft1 .c3c {
+                        color: #aaa;
+                        font-size: 12px;
+                        margin-bottom: 6px
+                    }
+
+                    .ft2, .ft3, .ft4 {
+                        clear: none;
+                        float: right;
+                        text-align: center
+                    }
+
+                    .ft3 {
+                        margin: 0 25px
+                    }
+                </style>
+
+                <script type="text/javascript" src="huati/all.js.下载"></script>
+                <script type="text/javascript">
+                    msc.goTop.init();
+                    msc.user.init();
+                    $("img.imgLoad").imgLoad();
+                    $("#search").click(function () {
+                        var q = $("#q").val().replace(/\s+/g, "").replace("　", "");
+                        window.location.href = 'https://home.meishichina.com/search/' + (q == "" ? '' : q + '/')
+                    });
+                    $("#q").keydown(function (e) {
+                        if (e.keyCode == 13)$("#search").click()
+                    });
+                </script>
+                <div class="fixed-footer" style="left: 1179.5px; right: auto; bottom: 10px;"><a href="javascript:;"
+                                                                                                title="点击返回页面顶部"
+                                                                                                onclick="window.scrollTo(0,0);"
+                                                                                                class="fixed-footer-go"></a>
+
+                    <div class="fixed-footer-weixin">
+                        <div class="fixed-footer-weixin-inner"><span></span></div>
+                    </div>
+                </div>
+
+
+
+</body>
+</html>

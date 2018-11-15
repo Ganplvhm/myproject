@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--收藏商家和帖子-->
+<article th:each="posts:${pageBean.list}">
+    <h2 class="title" th:text="${posts.postname}"></h2>
+    <ul class="text">
+        <p th:text="${posts.postssimpleintro}"></p>
+        <p class="textimg"><img th:src="${posts.postpic}"></p>
+    </ul>
+    <div class="textfoot">
+        <a th:href="@{/posts/details(postid=${posts.postid},userName=${session.user.userName})}">阅读全文</a>
+    </div>
+</article>
+</body>
+</html>

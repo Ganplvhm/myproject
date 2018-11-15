@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <title>关于我们</title>
+    <!-----------------Global css2------------------>
+    <link rel="stylesheet" th:href="@{/wzj/css2/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/wzj/css2/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/wzj/vendors/animate/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/wzj/vendors/imagehover/css/imagehover.min.css}">
+    <link rel="stylesheet" th:href="@{/wzj/vendors/iCheck/css/all.css}">
+    <link rel="stylesheet" th:href="@{/wzj/vendors/circliful/css/jquery.circliful.css}">
+    <link rel="stylesheet" th:href="@{/wzj/vendors/sweetalert2/css/sweetalert2.min.css}">
+    <!-------------------custom css2-------------------->
+    <link rel="stylesheet" th:href="@{/wzj/css2/custom.css}">
+    <link rel="stylesheet" th:href="@{/wzj/css2/styles.css}" >
+    <script th:src="@{/wzj/js/modernizr.js}"></script>
+    <link rel="stylesheet" th:href="@{/wzj/css2/layui.css}"  media="all">
+    <link rel="stylesheet" th:href="@{/wzj/css2/global.css}" media="all">
+<style>
+    .site-demo-tplh2{
+        height: 80px;
+    }
+    .site-demo-tplh2 img{
+        height: 90px;
+        border-radius: 100px;
+        float:left;
+    }
+    .site-demo-tplh2 #title{
+        margin-top: 20px;
+        margin-left: 40%;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .site-demo-tplview{
+        background-color: #fff;
+    }
+    #pc-kk-form-list{
+        height: 50px;
+        border: none;
+    }
+    #pc-kk-form-list-clear{
+        height: 50px;
+        border:none;
+    }
+    #last{
+        height: 50px;
+        border:none;
+    }
+    header #nav ul li a{
+        font-size: 14px;
+    }
+</style>
+    <style>
+        #zhuxiao:hover{
+            background-color: rgba(234, 234, 234, 0.51);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/shop1/shoppic.action}" target="_blank">首页</a></li>
+            <li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+            <li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+            <li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+            <li><a th:href="@{/topic}" target="_self">部落</a></li>
+            <li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+            <li><a th:href="@{/tous}" target="_blank"  id="nav_current">网站简介</a></li>
+            <li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+
+
+                <span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+            </li>
+        </ul>
+    </nav>
+</header>
+<!--------------About section---------->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 text-center mt-50">
+            <h2 class="text-center heading underline"><font size="20px"> 关于我们</font></h2>
+            <p>我们致力于发展成为一个中国最专业的美食网站！
+            </p>
+        </div>
+    </div>
+    <div class="row m-t-50">
+        <div class="col-sm-5">
+            <img th:src="@{/wzj/images/about_img.png}" class="img-responsive" alt="about_image">
+            <br/>
+        </div>
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-xs-12 text-justify">
+                    <p>美食，顾名思义就是美味的食物，贵的有山珍海味，便宜的有街边小吃。
+                        但是不是所有人对美食的标准都是一样的，其实美食是不分贵贱的，只要是自己喜欢的，就可以称之为美食。
+                        吃前有期待、吃后有回味的东西。美食遭遇心情的时候，美食已不仅仅是简单的味觉感受，更是一种精神享受。
+                        爱吃客网一直致力于城市消费体验的沟通和聚合。</p>
+
+                      <p>  我们网站几乎所有的信息都来源于网友搜集，服务于大众；每个人都可以自由发表对商家的评论，好则誉之，差则贬之；
+                        每个人都可以向大家分享自己的消费心得，同时分享大家集体的智慧。
+                          网友及时的分享美食资讯、互动美食信息是我们一直追求的。</p>
+
+                    <p> O2O的运营模式，功能实现online—offline线上流量与线下服务的共赢式结合，方便网友，成就商家。</p>
+
+                        <p>通过搜索引擎功能，可以很方便的查询到您要搜索的菜系、菜名、餐厅等信息。
+                        我们为网友提供了所有餐厅信息，使网友能够快速的了解到自己想要去的餐厅信息。
+                        我们还为网友提供相关健康饮食、文化等信息。网友通过本站可以发布自己产品的供应、求购等信息。</p>
+
+                        <p>2018年，当四个年轻人为自己的一日三餐吃什么而愁时，创建了一个小小的个人网站。
+                        这粒微不足道的小种子，受到了无数人的喜爱与呵护，成长为备受用户喜爱的美食网络。
+                        爱吃客的用户主要来自北上广深及各沿海省市，他们生活幸福，热爱分享，更愿为爱洗手煮汤羹。</p>
+
+                    <p>人人都是美食家，欢迎你参与进来——
+                        在爱吃客你可以认识食材、学习菜肴的科学知识。
+                        从小白到大咖，然后脑洞大开技惊全场；或者挑战烘焙，甜蜜满屋。
+                        我们希望爱吃客给人的感觉，会更加简洁、清新、美好，符合我们的使命：让吃更美好</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------About section end-->
+<!-------------What We do--------->
+<section class="circle_section parallax m-t-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 m-t-50">
+                <h2 class="heading2 underline2 text-white text-center"><font size="20px"> 我们可以</font></h2>
+                <p class="text-center text-white">我们的网站是最全面的美食网站，并且我们对网站的未来抱有美好的憧憬。</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row circliful_custom">
+                    <div class="col-sm-4 col-xs-12">
+                        <div id="test-circle"></div>
+                        <h4 class="text-center text-white"><strong>移动开发</strong></h4>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div id="test-circle1"></div>
+                        <h4 class="text-center text-white"><strong>网站开发</strong></h4>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 section-bottom-pad-40">
+                        <div id="test-circle2"></div>
+                        <h4 class="text-center text-white"><strong>热度</strong></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/><br/>
+</section>
+<!------------- What We do end--------->
+<!-----------------we promise -------------->
+<section class="m-t-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="heading underline"><font size="20px"> 我们承诺</font></h2>
+                <p class="text-center">我们将为您提供最全面的美食资讯，为您解决一切关于吃的疑问。</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 section-top-40">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="about_col_space">
+                            <div class="row profile1">
+                                <div class="col-md-3 col-sm-3 col-xs-3 section-top-20">
+                                    <img th:src="@{/wzj/images/responsible-energy-use.png}" class="img-responsive"
+                                         alt="about_icons">
+                                </div>
+
+                                <div class="profile_data col-md-9 col-sm-9 col-xs-9 section-top-20">
+                                    <a href="aboutus.html"><h5 class="profile_data"><strong>职责</strong></h5></a>
+                                    <p class="profile_data">为每一位用户提供最全面的美食资讯。
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about_col_space">
+                            <div class="row profile1">
+                                <div class="col-md-3  col-xs-3 section-top-20">
+                                    <img th:src="@{/wzj/images/global.png}" class="img-responsive" alt="about_icons">
+                                </div>
+                                <div class="profile_data col-md-9  col-xs-9 section-top-20">
+                                    <a href="aboutus.html"><h5 class="profile_data"><strong>全国联盟</strong></h5></a>
+                                    <p class="profile_data">包含全国范围内的世界美食，应有尽有。
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="about_col_space">
+                            <div class="row profile1">
+                                <div class="col-md-3  col-xs-3 section-top-20">
+                                    <img th:src="@{/wzj/images/diversity.png}" class="img-responsive" alt="about_icons">
+                                </div>
+                                <div class="profile_data col-md-9  col-xs-9 section-top-20">
+                                    <a href="aboutus.html"><h5 class="profile_data"><strong>多样化</strong></h5></a>
+                                    <p class="profile_data">丰富多彩的功能满足你的一切需求。
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about_col_space">
+                            <div class="row profile1">
+                                <div class="col-md-3 col-sm-3 col-xs-3 section-top-20">
+                                    <img th:src="@{/wzj/images/leadrship.png}" class="img-responsive" alt="about_icons">
+                                </div>
+                                <div class="profile_data col-md-9 col-sm-9 col-xs-9 section-top-20">
+                                    <a href="aboutus.html"><h5 class="profile_data"><strong>风格</strong></h5></a>
+                                    <p class="profile_data">认真对待每一种食物和每一位食客是我们的准则。
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <img th:src="@{/wzj/images/index3_1.png}" alt="boyimg" class="img-responsive">
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-------------we promise end--------->
+<!-------------------Subscribe Section----------->
+<section class="subscribe_section parallax m-t-70">
+    <div class="container m-t-50">
+        <div class="row section-top-25">
+            <div class="col-sm-7 col-md-6 col-xs-12 section-top-10">
+                <h3 class="text-white m-t-70">给我们提出宝贵的建议</h3>
+            </div>
+            <div class="col-sm-5 col-md-6 m-t-50 section-bottom-pad-40  input_transparent">
+                <br/>
+                <form action="subscribe.php" method="post" id="subscribe" autocomplete="off">
+                    <div class="input-group sub_input">
+                        <input type="email" name="email" id="email" class="form-control email"
+                               placeholder="填写您的邮箱地址" aria-describedby="email" required/>
+                        <span class="input-group-addon"><button type="submit" class="subscribe_btn"><i
+                                class="fa fa-paper-plane text-white" aria-hidden="true"></i></button></span>
+                    </div>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+    <br/>
+</section>
+<!-----------------Subscribe section End-------->
+<!----------------Our Services Section---------->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 m-t-50">
+            <h2 class="heading underline"><font size="20px">我们的服务</font></h2>
+            <p class="text-center">我们追求的就是为您提供全方位的美食服务，
+            让您迅速的了解到美食资讯。</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row m-t-50">
+                <div class="col-xs-12">
+                    <img th:src="@{/wzj/images/big-data.png}" alt="bigdata" class="img-responsive services_icon center-block">
+                </div>
+                <div class="col-xs-12 text-center">
+                    <h5><strong>大数据</strong></h5>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <p>包含来自全世界的美食，涵盖各界美食达人的分享。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row m-t-50">
+                <div class="col-xs-12">
+                    <img th:src="@{/wzj/images/light-bulb.png}" alt="bigdata" class="img-responsive services_icon center-block">
+                </div>
+                <div class="col-xs-12 text-center">
+                    <h5><strong>保证质量</strong></h5>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <p>所有美食的质量都由我们专人负责检测，给您完美的味觉体验。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row m-t-50">
+                <div class="col-xs-12">
+                    <img th:src="@{/wzj/images/construction-excavator.png}" alt="bigdata"
+                         class="img-responsive services_icon center-block">
+                </div>
+                <div class="col-xs-12 text-center">
+                    <h5><strong>建设活动</strong></h5>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <p>不定期抽选用户与我们一起到线下品尝美食，让用户看到我们的用心。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------Meet Our Team Section------->
+<section class="meetourteam m-t-70 parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 m-t-50">
+                <h2 class="text-white heading2 underline2 text-center"><font size="20px">我们的团队</font></h2>
+                <p class="text-center text-white">我们的团队由四位充满活力的年轻人组成，
+                年轻是我们的本钱，认真是我们的态度。</p>
+
+            </div>
+        </div>
+        <div class="row m-t-50">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-sm-3 text-center">
+                        <img th:src="@{/wzj/images/meet5.png}" alt="girlimg"
+                             class="img-responsive img-circle center-block industry-img">
+                        <h4 class="text-white"><strong>仇瑶</strong></h4>
+                        <p class="text-white">组长</p>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <img th:src="@{/wzj/images/meet2.png}" alt="girlimg"
+                             class="img-responsive img-circle center-block industry-img">
+                        <h4 class="text-white"><strong>甘鹏</strong></h4>
+                        <p class="text-white">开发者</p>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <img th:src="@{/wzj/images/meet4.png}" alt="girlimg"
+                             class="img-responsive img-circle center-block industry-img">
+                        <h4 class="text-white"><strong>冯浩</strong></h4>
+                        <p class="text-white">开发者</p>
+                    </div>
+                    <div class="col-sm-3 text-center section-bottom-pad-40">
+                        <img th:src="@{/wzj/images/meet3.png}" alt="girlimg"
+                             class="img-responsive img-circle center-block industry-img">
+                        <h4 class="text-white"><strong>吴子君</strong></h4>
+                        <p class="text-white">开发者</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shape"></div>
+</section>
+<!-----------Meet our team section end------------->
+<!-------------Footer Start------------------>
+
+<!-------------------Footer section End------------------>
+<!------------------Copy rights------------------->
+<section class="copy-rights">
+    <div class="container ">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 section-top-15">
+                <p class="footer_text_color"><a href="firstpage.html">主页</a> &nbsp;
+                    <a href="remen.html">热门</a> &nbsp; <a href="shop.html">商家</a> &nbsp;
+                    <a href="aboutus.html">关于我们</a></p>
+
+            </div>
+            <div class="col-xs-12 col-sm-6 text-right section-top-15">
+
+                <p class="footer_text_color  ">Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="爱吃客">爱吃客</a></p>
+            </div>
+        </div>
+        <a href="#" id="return-to-top"><img th:src="@{/wzj/images/backto.png" alt="image-missing"></a>
+    </div>
+</section>
+<!------------------Copy rights End------------------>
+<script th:th:src="@{/wzj/@{/wzj/js/jquery.min.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/js/bootstrap.min.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/vendors/iCheck/js/icheck.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/vendors/isotope/js/isotope.pkgd.min.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/vendors/countup/js/countUp.min.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/vendors/circliful/js/jquery.circliful.min.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/vendors/jribbble/js/jribbble.min.js}"></script>
+<script th:th:src="@{/wzj/@{/wzj/vendors/sweetalert2/js/sweetalert2.min.js}"></script>
+<!----------------Page Level JS-------------------->
+<script th:th:src="@{/wzj/@{/wzj/js/custom.js}"></script>
+
+</body>
+</html>

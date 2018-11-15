@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html  lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link th:href="@{/wzj/images/favicon.ico}" rel="shortcut icon" type="image/x-icon">
+<title>热门</title>
+<!--导航栏-->
+<script th:src="@{/wzj/js/modernizr.js}"></script>
+<link th:href="@{/wzj/css/styles.css}" rel="stylesheet">
+<link th:href="@{/wzj/css/layui.css}" rel="stylesheet" media="all">
+<link th:href="@{/wzj/css/global.css}" rel="stylesheet" media="all">
+<!-- Normalize -->
+<link th:href="@{/wzj/static/css/assets/normalize.css}" rel="stylesheet" type="text/css">
+<!-- Bootstrap -->
+<link th:href="@{/wzj/css/assets/bootstrap.min.css}" rel="stylesheet" type="text/css">
+<!-- Font-awesome.min -->
+<link th:href="@{/wzj/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<!-- Effet -->
+<link th:href="@{/wzj/css/gallery/foundation.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/wzj/css/gallery/set1.css}" rel="stylesheet" type="text/css" />
+<!-- Main Style -->
+<link th:href="@{/wzj/css/main.css}" rel="stylesheet" type="text/css">
+<!-- Responsive Style -->
+<link th:href="@{/wzj/css/responsive.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/wzj/css1/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/wzj/css1/style.css}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" th:src="@{/wzj/js/jquery-2.1.4.min.js}"></script>
+
+<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script th:src="@{/wzj/js/assets/modernizr-2.8.3.min.js}" type="text/javascript"></script>
+  <style>
+  .site-demo-tplh2{
+    height: 80px;
+  }
+  .site-demo-tplh2 img{
+    height: 90px;
+    border-radius: 100px;
+    float:left;
+  }
+  .site-demo-tplh2 #title{
+    margin-top: 20px;
+    margin-left: 40%;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .site-demo-tplview{
+    background-color: #fff;
+  }
+  #pc-kk-form-list{
+    height: 50px;
+    border: none;
+  }
+  #pc-kk-form-list-clear{
+    height: 50px;
+    border:none;
+  }
+  #last{
+    height: 50px;
+    border:none;
+  }
+  header #nav ul li a{
+    font-size: 14px;
+  }
+
+  .active {
+    color: #F58703;
+
+  }
+  .navbar-default .navbar-nav > li > a {
+    color:#777;
+  }
+    .none{
+      color:#777;
+    }
+</style>
+</head>
+
+<body style="height: 970px">
+<header>
+  <nav id="nav">
+    <ul>
+      <li><a th:href="@{/shop1/shoppic.action}" target="_blank" >首页</a></li>
+      <li><a th:href="@{/posts/remen}"  target="_blank" id="nav_current">热门</a></li>
+      <li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+      <li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+      <li><a th:href="@{/topic}" target="_self">部落</a></li>
+      <li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+      <li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+      <li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+
+
+        <span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+      </li>
+    </ul>
+    <!--<script src="../js/silder.js"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+  </nav>
+</header>
+
+<div class="logo_nav" style="font-size:3.5em">
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+        <nav class="link-effect-2" id="link-effect-2">
+        <ul id="dao" class="nav navbar-nav">
+          <li><a th:href="@{/posts/post(catoryid=1)}"><span data-hover="达人推荐">达人推荐</span></a></li>
+          <li><a th:href="@{/posts/post(catoryid=2)}"><span data-hover="网站精选">网站精选</span></a></li>
+          <li><a th:href="@{/posts/post(catoryid=3)}"><span data-hover="健康饮食">健康饮食</span></a></li>
+          <li><a th:href="@{/posts/post(catoryid=4)}"><span data-hover="食疗养生">食疗养生</span></a></li>
+          <li><a th:href="@{/posts/post(catoryid=5)}"><span data-hover="科学普及">科学普及</span></a></li>
+        </ul>
+        </nav>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+  </div>
+</div>
+
+<main class="main-wrapper" id="container"> 
+
+  <!-- image Gallery -->
+
+  <div class="wrapper" style="height: 1300px">
+    <div class="">
+      <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5 masonry">
+        <li class="masonry-item grid" th:each="posts:${posts}">
+          <figure class="effect-sarah"> <img th:src="${posts.postpic}" alt="" />
+            <figcaption>
+              <h2 th:text="${posts.postssimpleintro}"><span></span></h2>
+              <p>查看更多</p>
+              <a th:href="@{/posts/details(postid=${posts.postid},userName=${session.user.userName},catoryid=${catoryid})}"></a> </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<!-- Image Gallery --> 
+
+<!-- footer -->
+
+
+
+<!-- footer --> 
+
+<!-- jQuery --> 
+
+<script th:src="@{/wzj/js/jquery.min.js}"></script>
+<script>window.jQuery || document.write('<script th:src="@{/wzj/js/assets/jquery.min.js}"><\/script>')</script>
+<script th:src="@{/wzj/js/assets/plugins.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/assets/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/maps.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/custom.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/jquery.contact.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/main.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/gallery/masonry.pkgd.min.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/gallery/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/gallery/jquery.infinitescroll.min.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/gallery/main.js}" type="text/javascript"></script>
+<script th:src="@{/wzj/js/jquery.nicescroll.min.js}" type="text/javascript"></script>
+</body>
+</html>

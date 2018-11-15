@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.ShopMapper">
+
+    <!--<select id="selectshoppic" resultType="com.gem.chike.pojo.Shoppic">-->
+        <!--SELECT * FROM tb_shoppic1 WHERE shopId in(SELECT shopId FROM(SELECT shopId FROM tb_shoppraise GROUP BY shopId ORDER BY praiseNum DESC LIMIT 0,3)as foo)-->
+    <!--</select>-->
+
+    <!--11.7 qy-->
+    <select id="selectRoundTop" resultType="com.gem.chike.pojo.RoundPic">
+      select * from tb_round order by roundPicId desc  limit 5
+    </select>
+    <select id="selectPostsTop" resultType="com.gem.chike.pojo.Posts">
+        select * from tb_posts order by postspraise desc limit 0,3
+    </select>
+    <select id="selectPostsTops" resultType="com.gem.chike.pojo.Posts">
+        select * from tb_posts order by postspraise desc limit 3,3
+    </select>
+    <select id="selectPoster" resultType="com.gem.chike.pojo.Poster">
+        select * from tb_poster limit 3
+    </select>
+    <select id="selectShopPic" resultType="com.gem.chike.pojo.Shop">
+        select * from tb_shop order by shopconcernNum desc limit 3
+    </select>
+
+</mapper>

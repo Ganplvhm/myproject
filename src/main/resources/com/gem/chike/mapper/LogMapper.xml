@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.LogMapper">
+
+    <!--List<Log> getAllLog();-->
+    <select id="getAllLog" resultType="com.gem.chike.pojo.Log">
+        SELECT * FROM  tb_log
+    </select>
+
+    <resultMap id="log" type="com.gem.chike.pojo.Log">
+        <id property="logId" column="logId"></id>
+        <result property="logTitle" column="logTitle"></result>
+        <result property="logIntro" column="logIntro"></result>
+        <result property="logPic" column="logPic"></result>
+        <result property="userId" column="userId"></result>
+        <association property="user" javaType="com.gem.chike.pojo.User">
+            <id property="userId" column="userId"></id>
+            <result property="userName" column="userName"></result>
+            <result property="userLogoSrc" column="userLogoSrc"></result>
+        </association>
+    </resultMap>
+
+    <!-- Log logMore(int logId);-->
+    <select id="logMore" resultMap="log">
+        SELECT *  FROM  tb_log,tb_user WHERE tb_log.userId=tb_user.userId AND  tb_log.logId= #{param1}
+    </select>
+
+    <!-- int logMorecount();-->
+    <select id="logMorecount" resultType="java.lang.Integer">
+        SELECT COUNT(logId)  FROM  tb_log
+    </select>
+
+
+
+</mapper>

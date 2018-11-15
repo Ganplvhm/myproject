@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script th:src="@{/registerandlogin/libs/jquery-1.12.4.min.js}" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" th:href="@{/registerandlogin/css/index.css}"/>
+	</head>
+	<style>
+		html{
+
+			background-image: url("registerandlogin/images/bg-03.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+
+		}
+	</style>
+	<body >
+
+
+
+	<section style="background-color: white;height: 780px;width: 500px;position: relative;left: 700px">
+			<form id="form1" th:action="@{/register.action}" style="padding-top: 50px" method="post">
+				<div class="register-box">
+					<label  class="username_label">用 户 名
+					<input maxlength="20" name="userName" type="text" placeholder="您的用户名和登录名"/>
+					</label>
+					<div class="tips">
+						
+					</div>
+				</div>
+				<div class="register-box">
+					<label  class="other_label">设 置 密 码
+					<input maxlength="20" name="userPwd" type="password" placeholder="建议至少使用两种字符组合"/>
+					</label>
+					<div class="tips">
+						
+					</div>
+				</div>
+				<div class="register-box">
+					<label  class="other_label">确 认 密 码
+					<input maxlength="20" type="password" placeholder="请再次输入密码"/>
+					</label>
+					<div class="tips">
+						
+					</div>
+				</div>
+				<div class="register-box">
+					<label  class="other_label">
+					<span>中国 0086∨</span>
+					<input class="phone" id="phone" name="userPhone" maxlength="20" type="text" placeholder="建议使用常用手机"/>
+					</label>
+					<div class="tips">
+						
+					</div>
+				</div>
+						<div class="register-box">
+					<label  class="other_label">验 证 码
+					<input maxlength="20" type="text" placeholder="请输入验证码"/>
+					</label>
+					<span id="code"></span>
+					<div class="tips">
+						
+					</div>
+				</div>
+
+				<div style="width: 400px;height: 54px;border: 1px solid lightgray">
+					<a style="position: relative;">&nbsp;&nbsp;&nbsp;&nbsp;动&nbsp;态&nbsp;码</a><input type="text"  id="phonema"/><input type="button" style="width: 100px;height: 50px;position: relative;top: 2px;left:60px" value="获取动态码" id="btn"/>
+
+				<input type="hidden" name="yanzhengma" id="yanzhengma"/>
+				</div>
+				<div style="width: 400px;border:none">
+				<span id="errormsg"></span>
+				</div>
+				<script th:inline="javascript">
+                    /*<![CDATA[*/
+                    var contextPath = [[${#request.getContextPath()}]]; //获取当前应用路径
+
+                    /*]]>*/
+				</script>
+
+				<script>
+
+
+                    $(function () {
+                        $("#btn").click(function () {
+                            $("#errormsg").html("");
+                            // 获得手机号
+                            var pvar= $("#phone").val();
+
+
+                                //发送请求控制层，获得验证码
+
+                                $.ajax({
+                                        type:"get",
+                                        url:"/check1/getYanMa.action",
+                                        data:"phone="+pvar,
+
+                                        success:function (result) {
+                                            if(result[1].substring(22,27)=="00000"){
+
+                                                alert("验证码发送成功");
+                                                //手机成功接受验证码短信
+                                                $("#yanzhengma").val(result[0]);
+                                            }
+                                            else{
+                                                alert("验证码发送失败");
+                                                // 手机接受短信错误
+                                                $("#errormsg").html(request.respDesc);
+                                                $("#errormsg").css("color","red");
+
+                                            }
+                                        },
+                                        error:function () {
+
+                                        }
+                                    }
+                                );
+
+
+
+
+
+                        });
+
+
+                        //登录
+                        $("#form1").submit(
+
+                            function () {
+
+                                var yan= $("#yanzhengma").val();//验证码
+                                var  phone=$("#phonema").val();//填写的验证码
+                                if(yan==phone){
+                                    return true;
+                                }else {
+                                    $("#errormsg").html("验证码错误");
+                                    $("#errormsg").css("color",'red');
+                                    return false;
+								}
+
+                            }
+
+
+                        );
+
+
+                    });
+				</script>
+
+
+				<div class="arguement" style="margin-top:60px">
+					<input type="checkbox" id="xieyi"/>
+					阅读并同意
+					<a href="#">《吃客用户注册协议》</a>
+					<a href="#">《隐私政策》</a>
+					<div class="tips">
+						
+					</div>
+				</div>
+				<div class="submit_btn">
+					<button type="submit" id="submit_btn">立 即 注 册</button>
+				</div>
+			</form>
+		</section>
+		<script th:src="@{/registerandlogin/js/index.js}" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

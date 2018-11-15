@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.PageMapper">
+
+
+
+    <!--public void insertNews(News news);-->
+
+    <insert id="insertNews" parameterType="com.gem.chike.pojo.News">
+
+        insert into news values(#{id},#{title},#{content},#{createTime},#{userName},#{userpostSrc})
+
+    </insert>
+
+    <!--public News selectById(String nid);-->
+    <select id="selectById"  resultType="com.gem.chike.pojo.News">
+        select * from news where id=#{param1}
+    </select>
+    <!--public List<News> selectNews();-->
+    <select id="selectNews" resultType="com.gem.chike.pojo.News">
+        select * from news
+    </select>
+</mapper>

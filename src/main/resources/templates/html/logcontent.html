@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="mobile-agent" content="format=xhtml; url=https://m.meishichina.com/blog/1015626/">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.meishichina.com/blog/1015626/">
+    <link rel="shortcut icon" href="https://static.meishichina.com/v6/img/lib/f.ico">
+    <link rel="apple-touch-icon" href="https://static.meishichina.com/v6/img/lib/wapico.png">
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/css/all.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/css/all2.css}">
+    <script th:src="@{/fh/js/osd.js}"></script>
+
+    <script th:src="@{/fh/js/amp4ads-host-v0.js}"></script>
+    <script th:src="@{/fh/js/pubads_impl_rendering_266.js}"></script>
+    <script th:src="@{/fh/js/hm.js}"></script>
+    <script async="" type="text/javascript" th:src="@{/fh/js/gpt.js}"></script>
+    <script type="text/javascript" th:src="@{/fh/js/dfp-list-5.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/css/comment.css}">
+    <script th:src="@{/fh/js/share.js}"></script>
+    <link rel="stylesheet" th:href="@{/fh/css/share_style0_16.css}">
+    <link rel="preload" th:href="@{/fh/js/integrator.js}" as="script">
+    <script type="text/javascript" th:src="@{/fh/js/integrator.js}"></script>
+    <script th:src="@{/fh/js/pubads_impl_266.js}" async=""></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fh/导航栏/styles.css}">
+    <script th:src="@{/fh/导航栏/modernizr.js}"></script>
+    <link rel="stylesheet" th:href="@{/fh/导航栏/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/fh/导航栏/global.css}" media="all">
+    <style>
+
+        .site-demo-tplh2{
+            height: 80px;
+        }
+        .site-demo-tplh2 img{
+            height: 90px;
+            border-radius: 100px;
+            float:left;
+        }
+        .site-demo-tplh2 #title{
+            margin-top: 20px;
+            margin-left: 40%;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .site-demo-tplview{
+            background-color: #fff;
+        }
+        #pc-kk-form-list{
+            height: 50px;
+            border: none;
+        }
+        #pc-kk-form-list-clear{
+            height: 50px;
+            border:none;
+        }
+        #last{
+            height: 50px;
+            border:none;
+        }
+        header #nav ul li a{
+            font-size: 14px;
+        }
+    </style>
+
+
+</head>
+<body>
+<header>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/shop1/shoppic.action}" target="_blank" id="nav_current">首页</a></li>
+            <li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+            <li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+            <li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+            <li><a th:href="@{/topic}" target="_self">部落</a></li>
+            <li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+            <li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+            <li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+
+
+                <span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+            </li>
+        </ul>
+        <!--<script src="../html/silder.html"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+    </nav>
+</header>
+
+<div class="w logo_wrap2">
+
+    <div class="logo_current left">
+        <h1><a>吃客部落</a></h1>
+    </div>
+
+    <div class="logo_nav">
+
+        <a th:href="@{/topic}" >美食话题<i></i><b></b></a>
+        <a><i></i><b></b></a>
+        <a th:href="@{/logpage}" >美食日志<i></i><b></b></a>
+
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="w clear">
+        <div class="space_left">
+            <tr th:each="more:${logmore}">
+            <div class="userTop clear">
+                <h1><a  id="blog_title"
+                       href="" th:text="${logmore.logTitle}"  style="position: relative;left: 400px;color: #8f97f2"> </a>
+                </h1>
+                <a class="uright" target="_blank" href="" style="position: relative;right: 300px">
+                    <img  th:src="${logmore.user.userLogoSrc}"style="width: 40px;height: 40px" >
+                    <span id="blog_username" class="userName" th:text="${logmore.user.userName}" style="font-size: 15px;font-family: 楷体"></span>
+                </a>
+
+            </div>
+            <input id="blog_id" value="1015626" type="hidden">
+            <input id="blog_uid" value="34360" type="hidden">
+
+            <div class="blog_message mt20">
+
+                <p th:text="${logmore.logIntro}" style="position: relative;font-size:20px;font-family: 楷体;width:800px;left:100px"></p>
+
+                <p >
+
+                    <img th:src="${logmore.logPic}"
+                         style="position: relative;left: 200px;width: 600px;height: 400px " >
+
+                </p>
+
+                <p><br></p>
+
+                <p><br></p>
+
+            </div>
+
+
+
+
+            
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .footer-area {
+        padding: 10px 0
+    }
+
+    .footer-area .w {
+        padding-top: 10px;
+        border-top: 1px solid #e8e8e8
+    }
+
+    .footer-area a {
+        color: #666
+    }
+
+    .footer-area a:hover {
+        color: #ff6767
+    }
+
+    .ft1 {
+        clear: none;
+        float: left;
+        font-size: 11px;
+        color: #666;
+        width: 680px;
+        padding-top: 10px
+    }
+
+    .ft1 .c3b {
+        color: #c90;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px
+    }
+
+    .ft1 .c3b a {
+        color: #f50
+    }
+
+    .ft1 .c3c {
+        color: #aaa;
+        font-size: 12px;
+        margin-bottom: 6px
+    }
+
+    .ft2, .ft3, .ft4 {
+        clear: none;
+        float: right;
+        text-align: center
+    }
+
+    .ft3 {
+        margin: 0 25px
+    }
+</style>
+
+<script type="text/javascript" th:src="@{/fh/js/all.js}"></script>
+<script type="text/javascript">
+    msc.goTop.init();
+    msc.user.init();
+    $("img.imgLoad").imgLoad();
+    //搜索
+    $("#search").click(function () {
+        var q = $("#q").val().replace(/\s+/g, "").replace("　", "");
+        window.location.href = 'https://home.meishichina.com/search/' + (q == "" ? '' : q + '/')
+    });
+    $("#q").keydown(function (e) {
+        if (e.keyCode == 13)$("#search").click()
+    });
+
+    $(window).scroll(function () {
+        var omng = $(".keyshow").eq(0).offset();
+        var jtl = $("#smnbk").offset();
+        if (omng.top < $(document).scrollTop() + 40) {
+            $(".keyshow").css({
+                position: "fixed",
+                top: 40,
+                margin: 0,
+                left: omng.left
+            });
+        } else if (omng.top < jtl.top + 10) {
+            $(".keyshow").css({
+                position: "static",
+                margin: "20px 0 0 0"
+            });
+        }
+    });
+</script>
+<div class="fixed-footer" style="left: 1165px; right: auto; bottom: 10px;"><a href="javascript:;" title="点击返回页面顶部"
+                                                                              onclick="window.scrollTo(0,0);"
+                                                                              class="fixed-footer-go"
+                                                                              style="display: none; opacity: 1;"></a>
+
+    <div class="fixed-footer-weixin">
+        <div class="fixed-footer-weixin-inner"><span>美食天下手机客户端</span></div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/fh/js/msc-tools-date.js}"></script>
+<script type="text/javascript" th:src="@{/fh/js/msc-ui-smilies.js}"></script>
+<script type="text/javascript" th:src="@{/fh/js/msc-tools-comment.js}"></script>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=11097"></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript" th:src="@{/fh/js/blog_action2.js}"></script>
+<script>
+    $("li.top_bar_more").hoverDelay(function () {
+        $("li.top_bar_more div").show()
+    }, function () {
+        $("li.top_bar_more div").hide()
+    }, 200, 200);
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fb9cd9dcdda23cee0c7357db9be24acb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s)
+    })();
+</script>
+
+<iframe id="google_osd_static_frame_9030356481240" name="google_osd_static_frame"
+        style="display: none; width: 0px; height: 0px;"></iframe>
+</body>
+</html>

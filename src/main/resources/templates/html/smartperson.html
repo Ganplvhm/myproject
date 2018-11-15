@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" th:href="@{/gp/images/favicon.ico}" type="image/x-icon">
+
+    <title>吃客官网</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link th:href="@{/gp/css/styles.css}" rel="stylesheet">
+    <script th:src="@{/gp/js/modernizr.js}"></script>
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" th:href="@{/gp/css/base.css}">
+    <link rel="stylesheet" th:href="@{/gp/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/gp/css/main.css}">
+    <link rel="stylesheet" th:href="@{/gp/css/layui.css}"  media="all">
+    <link rel="stylesheet" th:href="@{/gp/css/global.css}" media="all">
+
+    <!-- script
+    ================================================== -->
+    <script th:src="@{/gp/js/modernizr.js}"></script>
+    <script th:src="@{/gp/js/pace.min.js}"></script>
+    <style>
+        .site-demo-tplh2{
+            height: 80px;
+        }
+        .site-demo-tplh2 img{
+            height: 90px;
+            border-radius: 100px;
+            float:left;
+        }
+        .site-demo-tplh2 #title{
+            margin-top: 20px;
+            margin-left: 40%;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .site-demo-tplview{
+            background-color: #fff;
+        }
+        #pc-kk-form-list{
+            height: 50px;
+            border: none;
+        }
+        #pc-kk-form-list-clear{
+            height: 50px;
+            border:none;
+        }
+        #last{
+            height: 50px;
+            border:none;
+        }
+        header #nav ul li a{
+            font-size: 14px;
+        }
+    </style>
+    <style>
+        #zhuxiao:hover{
+            background-color: rgba(234, 234, 234, 0.51);
+        }
+    </style>
+
+    <!-- favicons
+     ================================================== -->
+    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
+
+</head>
+
+<body id="top">
+
+<!-- header
+================================================== -->
+<header>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/shop1/shoppic.action}" target="_blank" >首页</a></li>
+            <li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+            <li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+            <li><a th:href="@{/Fashimg.action}" target="_blank"  id="nav_current">达人</a></li>
+            <li><a th:href="@{/topic}" target="_self">部落</a></li>
+            <li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+            <li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+            <li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+
+
+                <span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+            </li>
+        </ul>
+        <!--<script src="../js/silder.js"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+    </nav>
+</header>
+
+
+
+<!-- masonry
+================================================== -->
+<section id="bricks">
+
+    <div class="row masonry">
+
+        <!-- brick-wrapper -->
+        <div class="bricks-wrapper">
+
+            <div class="grid-sizer"></div>
+
+            <div class="brick entry featured-grid animate-this">
+                <div class="entry-content">
+                    <div id="featured-post-slider" class="flexslider">
+                        <ul class="slides">
+
+                            <li>
+                                <div class="featured-post-slide">
+
+                                    <!--<div class="post-background" style="background-image:url('images/thumbs/featured/featured-1.jpg');"></div>-->
+                                <img th:src="@{/gp/images/thumbs/featured/featured-1.jpg}" class="post-background">
+                                    <div class="overlay"></div>
+
+                                    <div class="post-content">
+                                        <ul class="entry-meta">
+                                            <li>September 06, 2016</li>
+                                            <li><a href="#" >Naruto Uzumaki</a></li>
+                                        </ul>
+
+                                        <h1 class="slide-title"><a href="details.html" title="">Minimalism Never Goes Out of Style</a></h1>
+                                    </div>
+
+                                </div>
+                            </li> <!-- /slide -->
+
+                            <li>
+                                <div class="featured-post-slide">
+
+                                    <!--<div class="post-background" style="background-image:url('images/thumbs/featured/featured-2.jpg');"></div>-->
+                                    <img th:src="@{/gp/images/thumbs/featured/featured-2.jpg}" class="post-background">
+                                    <div class="overlay"></div>
+
+                                    <div class="post-content">
+                                        <ul class="entry-meta">
+                                            <li>August 29, 2016</li>
+                                            <li><a href="#">Sasuke Uchiha</a></li>
+                                        </ul>
+
+                                        <h1 class="slide-title"><a href="details.html" title="">Enhancing Your Designs with Negative Space</a></h1>
+                                    </div>
+
+                                </div>
+                            </li> <!-- /slide -->
+
+                            <li>
+                                <div class="featured-post-slide">
+
+                                    <!--<div class="post-background" style="background-image:url('images/thumbs/featured/featured-3.jpg');;"></div>-->
+                                    <img th:src="@{/gp/images/thumbs/featured/featured-3.jpg}" class="post-background">
+                                    <div class="overlay"></div>
+
+                                    <div class="post-content">
+                                        <ul class="entry-meta">
+                                            <li>August 27, 2016</li>
+                                            <li><a href="#" class="author">Naruto Uzumaki</a></li>
+                                        </ul>
+
+                                        <h1 class="slide-title"><a href="details.html" title="">Music Album Cover Designs for Inspiration</a></h1>
+                                    </div>
+
+                                </div>
+                            </li> <!-- end slide -->
+
+                        </ul> <!-- end slides -->
+                    </div> <!-- end featured-post-slider -->
+                </div> <!-- end entry content -->
+            </div>
+
+            <article class="brick entry format-standard animate-this" th:each="fashimg:${fashimgList}">
+
+                <div class="entry-thumb">
+                    <a th:href="@{/todetail(fashionerId=${fashimg.fashionerId})}" class="thumb-link">
+                        <img th:src="${fashimg.fshimg_src}" alt="building">
+                    </a>
+                </div>
+
+                <div class="entry-text">
+                    <div class="entry-header">
+                        <h1 class="entry-title"><a th:href="@{/todetail(fashionerId=${fashimg.fashionerId})}" th:text="${fashimg.fashtitle}"></a></h1>
+
+                    </div>
+                    <P class="entry-excerpt" th:text="${fashimg.fashdescript}">
+                    </P>
+                </div>
+
+            </article> <!-- end article -->
+            <article class="brick entry format-standard animate-this" th:each="fashmp4:${fashmp4List}">
+
+                <div class="entry-thumb">
+                    <a th:href="@{/todetail(fashionerId=${fashmp4.fashionerId})}" class="thumb-link">
+                        <video th:src="${fashmp4.fshimg_src}" autoplay="autoplay" loop="loop" alt="building"/>
+                    </a>
+                </div>
+
+                <div class="entry-text">
+                    <div class="entry-header">
+                        <h1 class="entry-title"><a href="details.html" th:text="${fashmp4.fashtitle}"></a></h1>
+
+                    </div>
+                    <P class="entry-excerpt" th:text="${fashmp4.fashdescript}">
+                    </P>
+                </div>
+
+            </article> <!-- end article -->
+
+
+
+
+        </div> <!-- end brick-wrapper -->
+
+    </div> <!-- end row -->
+
+
+</section> <!-- end bricks -->
+
+
+
+<!-- footer
+
+================================================== -->
+
+
+
+
+<!-- Java Script
+================================================== -->
+<script th:src="@{/gp/js/jquery-2.1.3.min.js}"></script>
+<script th:src="@{/gp/js/plugins.js}"></script>
+<script th:src="@{/gp/js/jquery.appear.js}"></script>
+<script th:src="@{/gp/js/main.js}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.TopicMapper">
+
+    <resultMap id="topic" type="com.gem.chike.pojo.Topic">
+    <id property="topicId" column="topicId"></id>
+    <result property="topicIntro" column="topicIntro"></result>
+    <result property="userId" column="userId"></result>
+        <association property="user" javaType="com.gem.chike.pojo.User">
+            <id property="userId" column="userId"></id>
+            <result property="userName" column="userName"></result>
+            <result property="userLogoSrc" column="userLogoSrc"></result>
+        </association>
+        <!--<association property="topicId" javaType="com.gem.chike.pojo.TopicPic">-->
+            <!--<id property="topicPicId" column="topicPicId"></id>-->
+            <!--<result property="topicPic" column="topicPic"></result>-->
+            <!--<result property="topicId" column="topicId"></result>-->
+        <!--</association>-->
+    </resultMap>
+
+
+    <!--List<Log> getTopic();-->
+    <select id="getTopic" resultMap="topic">
+     SELECT topicId, userLogoSrc,userName,topicIntro FROM tb_user,tb_topic WHERE  tb_user.userId=tb_topic.userId
+    </select>
+
+     <select id="getTopicMore" resultMap="topic">
+         SELECT * FROM tb_user,tb_topic WHERE  tb_topic.topicId=#{param1} AND  tb_user.userId=tb_topic.userId
+     </select>
+
+    <select id="topicCount" resultType="java.lang.Integer">
+        SELECT COUNT(topicId)  FROM  tb_topic
+    </select>
+
+</mapper>

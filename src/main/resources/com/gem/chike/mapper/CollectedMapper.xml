@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.CollectedMapper">
+    <insert id="insertCollectedShop">
+        INSERT INTO tb_shopcollected(shopId,userName,shopName,shopSimpleIntro,shopPic) VALUES(#{param1},#{param2},#{param3},#{param4},#{param5})
+    </insert>
+    <insert id="insertCollectedPosts">
+        INSERT INTO tb_postscollected(postid,userName,postname,postssimpleintro,postpic) VALUES(#{param1},#{param2},#{param3},#{param4},#{param5})
+    </insert>
+    <!--达人帖子-->
+    <insert id="insertConcernedFash">
+        INSERT INTO tb_fashionerconcerned(fashionerId,userName) VALUES(#{param1},#{param2})
+    </insert>
+    <insert id="insertCollectedPoster">
+        INSERT INTO tb_fashionerconcerned(posterid,userName,postername,posterintro,posterpic) VALUES(#{param1},#{param2},#{param3},#{param4},#{param5})
+    </insert>
+
+
+    <select id="selectCollectedShop" resultType="com.gem.chike.pojo.ShopCollected">
+        select * from tb_shopcollected where userName=#{param1}
+    </select>
+    <select id="selectCollectedPosts" resultType="com.gem.chike.pojo.PostsCollected">
+        SELECT * from tb_postsCollected where userName=#{param1}
+    </select>
+    <select id="selectConcernedFashioner" resultType="com.gem.chike.pojo.FashionerConcerned">
+        select * from tb_fashionerconcerned where userName=#{param1}
+    </select>
+    <select id="selectCollectedShopNum" resultType="java.lang.Integer">
+        select count(*) from tb_shopcollected where userName=#{param1}
+    </select>
+    <select id="selectCollectedPostsNum" resultType="java.lang.Integer">
+        select count(*) from tb_postsCollected where userName=#{param1}
+    </select>
+    <select id="selectConcernedFashionerNum" resultType="java.lang.Integer">
+        select count(*) from tb_fashionerconcerned where userName=#{param1}
+    </select>
+
+</mapper>

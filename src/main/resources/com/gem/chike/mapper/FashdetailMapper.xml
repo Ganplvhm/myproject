@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.FashdetailMapper">
+    <select id="selectcards" resultType="com.gem.chike.pojo.Fashdetail">
+        SELECT * FROM tb_fashdetail WHERE fashionerId=#{param1};
+    </select>
+</mapper>

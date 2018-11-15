@@ -1,0 +1,583 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>商家详情</title>
+<link th:href="@{/qy/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all">
+<link th:href="@{/qy/css/style2.css}" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swimming Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script th:src="@{/qy/js/jquery.min.js}"></script>
+	<link th:href="@{/qy/css/styles.css}" rel="stylesheet">
+	<script th:src="@{/qy/js/modernizr.js}"></script>
+	<link rel="stylesheet" th:href="@{/qy/css/layui.css}"  media="all">
+	<link rel="stylesheet" th:href="@{/qy/css/global.css}" media="all">
+	<link rel="stylesheet" th:href="@{/gp/css/style9.css}">
+	<link rel="stylesheet" th:href="@{/gp/css/comment8.css}">
+	<style>
+		.site-demo-tplh2{
+			height: 80px;
+		}
+		.site-demo-tplh2 img{
+			height: 90px;
+			border-radius: 100px;
+			float:left;
+		}
+		.site-demo-tplh2 #title{
+			margin-top: 20px;
+			margin-left: 40%;
+			font-weight: bold;
+			font-size: 25px;
+		}
+		.site-demo-tplview{
+			background-color: #fff;
+		}
+		#pc-kk-form-list{
+			height: 50px;
+			border: none;
+		}
+		#pc-kk-form-list-clear{
+			height: 50px;
+			border:none;
+		}
+		#last{
+			height: 50px;
+			border:none;
+		}
+		header #nav ul li a{
+			font-size: 14px;
+		}
+		.about-bottom .img-responsive{
+			width: 262px;
+			height: 209px;
+		}
+
+		#myLi1:hover::before{
+			content: '';
+			width: 262px;
+			height: 209px;
+			position: absolute;
+			z-index: 999;
+			background-color: #A7CBB4;
+			text-align: center;
+			line-height: 209px;
+			color: blueviolet;
+			font-size: 22px;
+			font-family: "幼圆";
+			opacity: 0.8;
+		}
+	</style>
+<script type="text/javascript" th:src="@{/qy/js/move-top.js}"></script>
+       <script type="text/javascript" th:src="@{/qy/js/easing.js}"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+				});
+			});
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+
+		$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
+<!--评论样式-->
+
+	<link rel="stylesheet" type="text/css" th:href="@{/qy/css/bootstrap.css}">
+	<style>
+		.container{
+			width: 1170px;
+		}
+		.commentbox{
+			width: 900px;
+			margin: 20px auto;
+		}
+		.mytextarea {
+			width: 100%;
+			overflow: auto;
+			word-break: break-all;
+			height: 100px;
+			color: #000;
+			font-size: 1em;
+			resize: none;
+		}
+		.comment-list{
+			width: 900px;
+			margin: 20px auto;
+			clear: both;
+			padding-top: 20px;
+		}
+		.comment-list .comment-info{
+			position: relative;
+			margin-bottom: 20px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid #ccc;
+		}
+		.comment-list .comment-info header{
+			width: 10%;
+			position: absolute;
+		}
+		.comment-list .comment-info header img{
+			width: 100%;
+			border-radius: 50%;
+			padding: 5px;
+		}
+		.comment-list .comment-info .comment-right{
+			padding:5px 0px 5px 11%;
+		}
+		.comment-list .comment-info .comment-right h3{
+			margin: 5px 0px;
+		}
+		.comment-list .comment-info .comment-right .comment-content-header{
+			height: 25px;
+		}
+		.comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
+			padding-right: 2em;
+			color: #aaa;
+		}
+		.comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
+			cursor: pointer;
+		}
+		.comment-list .comment-info .comment-right .reply-list {
+			border-left: 3px solid #ccc;
+			padding-left: 7px;
+		}
+		.comment-list .comment-info .comment-right .reply-list .reply{
+			border-bottom: 1px dashed #ccc;
+		}
+		.comment-list .comment-info .comment-right .reply-list .reply div span{
+			padding-left: 10px;
+		}
+		.comment-list .comment-info .comment-right .reply-list .reply p span{
+			padding-right: 2em;
+			color: #aaa;
+		}
+	</style>
+	<style>
+		#zhuxiao:hover{
+			background-color: rgba(234, 234, 234, 0.51);
+		}
+
+		/*收藏店家标签样式*/
+		#shopCollect{
+			font-size: 14px;
+			float: right;
+			text-decoration: none;
+			margin-top: -5%;
+
+		}
+		#shopCollect:hover{
+			color:blue;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	</style>
+	<style>
+		#zhuxiao:hover{
+			background-color: rgba(234, 234, 234, 0.51);
+		}
+	</style>
+</head>
+<body>
+<!-- header -->
+<header>
+	<nav id="nav">
+		<ul>
+			<li><a th:href="@{/shop1/shoppic.action}" target="_blank" id="nav_current">首页</a></li>
+			<li><a th:href="@{/posts/remen}"  target="_blank">热门</a></li>
+			<li><a th:href="@{/shop/page}" target="_blank">商家</a></li>
+			<li><a th:href="@{/Fashimg.action}" target="_blank">达人</a></li>
+			<li><a th:href="@{/topic}" target="_self">部落</a></li>
+			<li><a th:href="@{/personal}" target="_blank" >我的</a></li>
+			<li><a th:href="@{/tous}" target="_blank">网站简介</a></li>
+			<li id="userLi" style="position: relative;left: 700px">
+
+					<span  th:if="${session.user != null}">
+    				欢迎您,
+    				<span th:text="${session.user.userName}"></span>
+						<a th:href="@{/loginout.action}" id="zhuxiao">注销</a>
+					</span>
+
+
+				<span th:unless="${session.user != null}">
+						<a class="btn" th:href="@{/toLogin}">请登录</a>
+					</span>
+
+			</li>
+		</ul>
+		<!--<script src="../html/silder.html"></script>&lt;!&ndash;获取当前页导航 高亮显示标题&ndash;&gt;-->
+	</nav>
+</header>
+<!-- header -->
+<!-- contact -->
+<div class="about" th:each="shopMore:${shopMoreText}">
+	<div class="container">
+		<h2 th:text="${shopMore.shopName}"></h2>
+		<!--<a th:href="@{/collected/shopCollected(shopId=${shopMore.shopId},userName=${session.user.userName})}" id="shopCollect">收藏店家</a>-->
+		<a id="shopCollect" class="shoucang">收藏商家</a>
+		<!--th:href="@{/collected/postsCollected(postid=${posts.postid},userName=${session.user.userName})}"-->
+		<script>
+            function GetQueryString(name)
+            {
+                var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+                if(r!=null)return  unescape(r[2]); return null;
+            }
+            $(".shoucang").click(function(){
+                var shopId=GetQueryString("shopId");
+                var userName=GetQueryString("userName");
+                alert("收藏成功")
+                $.ajax({
+                    type:"get",
+                    url:"/check1/collected/shopCollected",
+                    data:{shopId:shopId,userName:userName},
+                })
+            });
+
+		</script>
+		<div class="about-top">
+		<div class="col-md-7 about-left">
+			<img src="http://ph584gplc.bkt.clouddn.com/thumbnails.jpg" class="img-responsive" alt="">
+		</div>
+		<div class="col-md-5 about-right" >
+			
+			<P th:text="${shopMore.shopIntro}"> </P>
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="about-middle">
+		<div class="col-md-6 ab-lft">
+			<h3>店内介绍</h3>
+			<P th:text="${shopMore.shopInsideIntro}">  </P>
+				<ul>
+					<li><img src="http://ph584gplc.bkt.clouddn.com/esk.jpeg" style="height: 160px;width: 200px;"/></li>
+				</ul>
+		</div>
+		<div class="col-md-6 ab-rgt">
+			<h3>其他详情</h3>
+			<p>地址：<a th:href="${shopMore.shopAddress}" style="text-decoration: none;" th:text="${shopMore.shopAddressInfo}"></a></p>
+			<p>停车信息：<a style="text-decoration: none;" th:text="${shopMore.shopPark}"></a></p>
+			<p>人均：<a style="text-decoration: none;" th:text="${shopMore.shopPerCost}"></a>元</p>
+			<p>营业时间：<a style="text-decoration: none;" th:text="${shopMore.shopWorkTime}"></a></p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+		<div class="about-bottom">
+				<h4>特色菜系</h4>
+				<ul th:each="shopPic:${shopPics}">
+
+					<li id="myLi1">
+						<img  th:src="${shopPic.shopPicSrc}" class="img-responsive">
+					</li>
+
+					<div id="myLi5"> </div>
+				</ul>
+			</div>
+	</div>
+</div>
+
+<!--评论插件-->
+<div class="commentAll" style="width: 900px">
+	<!--评论区域 begin-->
+	<div class="reviewArea clearfix">
+		<textarea class="content comment-input" placeholder="请在此&hellip;" onkeyup="keyUP(this)"></textarea>
+		<a href="javascript:;" id="ping" class="plBtn">评论</a>
+	</div>
+	<!--评论区域 end-->
+	<!--回复区域 begin-->
+	<div class="comment-show">
+
+	</div>
+	<!--回复区域 end-->
+</div>
+<a class="js-load-more" style="margin-left:895px;cursor:pointer;">加载更多评论</a>
+<script type="text/javascript" th:src="@{/gp/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/gp/js/jquery.flexText.js}"></script>
+
+<!--点击收藏按钮-->
+<script type="text/javascript">
+//	$(document).ready(function(){
+//	    $("#shopCollect").click(function(){
+//	        htmlobj
+//		})
+//	})
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('.content').flexText();
+    });
+</script>
+<!--textarea限制字数-->
+<script type="text/javascript">
+    function keyUP(t){
+        var len = $(t).val().length;
+        if(len > 139){
+            $(t).val($(t).val().substring(0,140));
+        }
+    }
+</script>
+<!--点击评论创建评论条-->
+<script type="text/javascript">
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    $(function () {
+        /*初始化*/
+        var counter = 0; /*计数器*/
+        var pageStart = 0; /*offset*/
+        var pageSize = 1; /*size*/
+
+        /*首次加载*/
+        getData(pageStart, pageSize);
+
+        /*监听加载更多*/
+        $(document).on('click', '.js-load-more', function(){
+            counter ++;
+            pageStart = counter * pageSize;
+
+            getData(pageStart, pageSize);
+        });
+
+
+
+        function getData(offset,size){
+            $.ajax({
+                type: "get",
+                url: "/check1/userpLun", //这里offset,size无作用，仅方便调试
+                dataType: 'json',
+                success: function(response1){
+                    var data = response1;
+                    var sum = response1.length;
+                    var path1="http://localhost:8080/check1/";
+                    var result = '';
+
+                    /************业务逻辑块：实现拼接html内容并append到页面*****************/
+
+                    //console.log(offset , size, sum);
+
+                    /*如果剩下的记录数不够分页，就让分页数取剩下的记录数
+                    * 例如分页数是5，只剩2条，则只取2条
+                    *
+                    * 实际MySQL查询时不写这个不会有问题
+                    */
+                    if(sum - offset < size ){
+                        size = sum - offset;
+                    }
+
+//                                {"cardId":2,"cardImgsrc":"http://ph584gplc.bkt.clouddn.com/%E8%BE%BE%E4%BA%BA%E8%AF%A6%E6%83%852.jpg","fashionerId":1},{"cardId":3,"cardImgsrc":"http://ph584gplc.bkt.clouddn.com/%E8%BE%BE%E4%BA%BA%E8%AF%A6%E6%83%8510.jpg","fashionerId":1},{"cardId":4,"cardImgsrc":"http://ph584gplc.bkt.clouddn.com/%E8%BE%BE%E4%BA%BA%E8%AF%A6%E6%83%851.jpg","fashionerId":1},{"cardId":5,"cardImgsrc":"http://ph584gplc.bkt.clouddn.com/%E8%BE%BE%E4%BA%BA%E8%AF%A6%E6%83%853.jpg","fashionerId":1},{"cardId":6,"cardImgsrc":"http://ph584gplc.bkt.clouddn.com/%E8%BE%BE%E4%BA%BA%E8%AF%A6%E6%83%854.jpg","fashionerId":1},{"cardId":7,"cardImgsrc":"http://ph584gplc.bkt.clouddn.com/%E8%BE%BE%E4%BA%BA/2/344305121b6cfee8d6e866b6c4d2f1aa.jpg","fashionerId":1}]]
+                    /*使用for循环模拟SQL里的limit(offset,size)*/
+                    for(var i=offset; i< (offset+size); i++){
+                        result +='<div class="comment-show-con clearfix">'+
+                            '<div class="comment-show-con-img pull-left"><img src="'+path1 +''+data[i].userLogoSrc+'" alt="" style="width: 70px;height: 70px"></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name" >'+data[i].userName+'</a> <span class="my-pl-con">&nbsp;'+data[i].pingLun+'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+data[i].pinluntime+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div>'
+
+                        ;
+                    }
+
+                    $(".comment-show").append(result);
+                    /*******************************************/
+
+                    /*隐藏more*/
+                    if ( (offset + size) >= sum){
+                        $(".js-load-more").hide();
+                    }else{
+                        $(".js-load-more").show();
+                    }
+                },
+                error: function(){
+
+                }
+            });
+        }
+        var userName = GetQueryString("userName");
+        $.ajax({
+            type: "get",
+            url: "/check1/userlogo" + "?" + "userName" + "=" + userName,
+            dataType: 'json',
+            success: function (response) {
+                $('.commentAll').on('click', '.plBtn', function () {
+                    var data = response;
+
+                    var myDate = new Date();
+                    //获取当前年
+                    var year = myDate.getFullYear();
+                    //获取当前月
+                    var month = myDate.getMonth() + 1;
+                    //获取当前日
+                    var date = myDate.getDate();
+                    var h = myDate.getHours();       //获取当前小时数(0-23)
+                    var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+					var path="http://localhost:8080/check1/";
+                    if (m < 10) m = '0' + m;
+                    var s = myDate.getSeconds();
+                    if (s < 10) s = '0' + s;
+                    var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
+                    //获取输入内容
+                    var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
+                    $.ajax({
+                        type: "get",
+                        url: "/check1/userping" + "?" + "userName" + "=" + userName+"&"+"pinglun"+"="+oSize+"&"+"time"+"="+now+"",
+                    })
+                    console.log(oSize);
+                    //动态创建评论模块
+                    oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="'+path +''+ data[0].userLogoSrc + '" alt="" style="width: 70px;height: 70px"></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name" >'+data[0].userName+'</a> <span class="my-pl-con">&nbsp;' + oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+                    if (oSize.replace(/(^\s*)|(\s*$)/g, "") != '') {
+                        $(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
+                        $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
+                    }
+                })
+                $('.comment-show').on('click','.pl-hf',function(){
+                    //获取回复人的名字
+                    var fhName = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
+                    //回复@
+                    var fhN = '回复@'+fhName;
+                    //var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
+                    var fhHtml = '<div class="hf-con pull-left"> <textarea class="content comment-input hf-input" id="neir" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
+                    //显示回复
+                    if($(this).is('.hf-con-block')){
+                        $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
+                        $(this).removeClass('hf-con-block');
+                        $('.content').flexText();
+                        $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding','6px 15px');
+                        //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
+                        //input框自动聚焦
+                        $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
+                    }else {
+                        $(this).addClass('hf-con-block');
+                        $(this).parents('.date-dz-right').siblings('.hf-con').remove();
+                    }
+                });
+                $('.comment-show').on('click','.hf-pl',function(){
+                    var oThis = $(this);
+                    var myDate = new Date();
+                    //获取当前年
+                    var year=myDate.getFullYear();
+                    //获取当前月
+                    var month=myDate.getMonth()+1;
+                    //获取当前日
+                    var date=myDate.getDate();
+                    var h=myDate.getHours();       //获取当前小时数(0-23)
+                    var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+                    if(m<10) m = '0' + m;
+                    var s=myDate.getSeconds();
+                    if(s<10) s = '0' + s;
+                    var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+                    //获取输入内容
+                    var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
+                    console.log(oHfVal)
+                    var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
+                    var oAllVal = '回复@'+oHfName;
+                    if(oHfVal.replace(/^ +| +$/g,'') == '' || oHfVal == oAllVal){
+
+                    }else {
+                        $.ajax({
+                            type: "get",
+                            url: "/check1/userhp",
+                            dataType: 'json',
+                            success: function (response3) {
+                                var data = response3;
+                                var oAt = '';
+                                var oHf = '';
+                                $.each(data, function (n, v) {
+                                    delete v.hfContent;
+                                    delete v.atName;
+                                    var arr;
+                                    var ohfNameArr;
+                                    if (oHfVal.indexOf("@") == -1) {
+                                        data['atName'] = '';
+                                        data['hfContent'] = oHfVal;
+                                    } else {
+                                        arr = oHfVal.split(':');
+                                        ohfNameArr = arr[0].split('@');
+                                        data['hfContent'] = arr[1];
+                                        data['atName'] = ohfNameArr[1];
+
+
+                                        if (data.atName == '') {
+                                            oAt = data.hfContent;
+                                        } else {
+                                            var huifu=oHfVal.substring(7,oHfVal.length)
+                                            oAt = '回复<a href="#" class="atName">@' + userName + ":" + '</a> ' + huifu;
+                                        }
+                                    }
+                                    oHf = data.hfName;
+                                });
+
+                                var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">我的名字 : </a><span class="my-pl-con">' + oAt + '</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>';
+                                oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display', 'block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
+                            }
+                        });
+                    }
+                });
+                $('.commentAll').on('click','.removeBlock',function(){
+                    var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
+                    if(userName!="gpgp"){
+                        $('.removeBlock').removeAttrs('href');
+					}
+                    if(oT.siblings('.all-pl-con').length >= 1){
+                        oT.remove();
+                    }else {
+                        $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display','none')
+                        oT.remove();
+                    }
+                    $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
+
+                })
+                $('.comment-show').on('click','.date-dz-z',function(){
+                    var zNum = $(this).find('.z-num').html();
+                    if($(this).is('.date-dz-z-click')){
+                        zNum--;
+                        $(this).removeClass('date-dz-z-click red');
+                        $(this).find('.z-num').html(zNum);
+                        $(this).find('.date-dz-z-click-red').removeClass('red');
+                    }else {
+                        zNum++;
+                        $(this).addClass('date-dz-z-click');
+                        $(this).find('.z-num').html(zNum);
+                        $(this).find('.date-dz-z-click-red').addClass('red');
+                    }
+                })
+
+
+            }
+        });
+    });
+</script>
+
+
+<!--相关文章-->
+
+
+<div class="footer">
+	<div class="container">
+		<div class="col-md soci">
+			<h3>联系客服</h3>
+			<p>Find us on these social network sites</p>
+					<ul>
+						<li><a href="#"><i class="facebk"> </i></a></li>
+						<li><a href="#"><i class="twter"> </i></a></li>
+						<li><a href="#"><i class="goopl"> </i></a></li>
+						<li><a href="#"><i class="insta"> </i></a></li>
+							<div class="clearfix"></div>
+					</ul>
+
+		</div>
+
+
+			<div class="clearfix"> </div>
+
+	</div>
+</div>
+<a href="#" id="toTop" style="display: block;"><span class="toTopHover" style="opacity: 0;"></span> <span id="toTopHover" style="opacity: 0;"> </span></a>
+<!-- footer -->
+</body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.chike.mapper.UserMapper">
+    <!--gp-->
+    <insert id="InsertUser">
+        insert into tb_user(userId, userPwd, userName, userPhone)
+        values(#{param1},#{param2},#{param3},#{param4})
+    </insert>
+    <insert id="InsertshopPlun">
+        insert into tb_shopPlun(pinglun,userName,userLogoSrc,pinluntime)
+        values(#{param1},#{param2},#{param3},#{param4})
+    </insert>
+    <update id="updateUser">
+        UPDATE tb_user SET userSex=#{param1},userAge=#{param2},userEmail=#{param3},userAddress=#{param4},userPhone=#{param5},userLogoSrc=#{param7} Where userName=#{param6}
+    </update>
+    <!--String userSex, int userAge, String email, String userAddress-->
+
+    <!--qy-->
+    <update id="updateUserLogo">
+        update tb_user set userSex=#{param1},userAge=#{param2},userEmail=#{param3},userAddress=#{param4},userPhone=#{param5}, userLogoSrc=#{param6} where userName=#{param7}
+    </update>
+
+    <!--gp-->
+    <select id="selectUser" resultType="com.gem.chike.pojo.User">
+        SELECT * FROM tb_user WHERE userName=#{param1} and userPwd=#{param2}
+    </select>
+
+
+    <!--qy-->
+
+    <select id="selectUserByName" resultType="com.gem.chike.pojo.User">
+        select * from tb_user where userName=#{userName}
+    </select>
+
+    <!--查询userPost-->
+    <select id="selectUserPostByUserName" resultType="com.gem.chike.pojo.UserPosts">
+        select * from tb_userpost where userName=#{param1}
+    </select>
+    <select id="selectPlun" resultType="com.gem.chike.pojo.ShoppLun">
+        SELECT * FROM tb_shopplun
+    </select>
+    <select id="selecthf" resultType="com.gem.chike.pojo.shophf">
+        select * from tb_shophf;
+    </select>
+    <!--11.6 qy-->
+    <select id="selectUserPost" resultType="com.gem.chike.pojo.UserPosts">
+        select * from tb_userpost where userPostId=#{param1}
+    </select>
+    <select id="selectUserPostAll" resultType="com.gem.chike.pojo.UserPosts">
+        select *  from tb_userpost order by userPostId desc limit 8
+    </select>
+
+    <select id="selectNewsCount" resultType="java.lang.Integer">
+      SELECT COUNT(*) FROM news WHERE userName=#{param1}
+    </select>
+
+</mapper>
